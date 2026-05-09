@@ -6,18 +6,16 @@ workflows:
       java: 17
     scripts:
       - name: Set up Android SDK
-        script: |
-          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+        script: | 
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > RecuerdameApp/local.properties
       - name: Build APK debug
-        script: |
+        script: | 
+          cd RecuerdameApp
           chmod +x gradlew
           ./gradlew assembleDebug
     artifacts:
-      - app/build/outputs/apk/debug/app-debug.apk
+      - RecuerdameApp/app/build/outputs/apk/debug/*.apk
     publishing:
       email:
         recipients:
           - larioschristopher13@gmail.com
-        notify:
-          success: true
-          failure: true
